@@ -8,10 +8,8 @@ class TopsController < ApplicationController
     end
     
     def login
-        signup_password = BCrypt::Password.create("sanriko")
-        
-        login_password = BCrypt::Password.new(signup_password)
-        if login_password == params[:pass]
+        login_password = BCrypt::Password.create("sanriko")
+        if BCrypt::Password.new(login_password) == params[:pass]
             p "logged in!"
         #if User.find_by(uid: params[:uid], pass: params[:pass])
         #if params[:uid] == 'kindai' and params[:pass] == 'sanriko'
